@@ -1,7 +1,12 @@
 package com.knoldus.kip.models
 
-trait Queue {
-  val queueWithList: List[Int]
-  def enqueue: Boolean
-  def dequeue: Int
+class Queue(queueWithList: List[Int]) {
+
+  def enqueue(x: Int): Queue = {
+    new Queue(queueWithList ::: List(x))
+  }
+
+  def dequeue: Queue = {
+    new Queue(queueWithList.tail)
+  }
 }
